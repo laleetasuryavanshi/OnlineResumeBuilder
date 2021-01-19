@@ -74,10 +74,19 @@ public class FresherModuleController {
 
 	@DeleteMapping("/deletefresher/{id}")
 	public String deleteFresherById(@ApiParam("Need To Provide Fresher Id In The Form of Long") @PathVariable Long id) {
-		repo.findById(id).orElseThrow(() -> new FresherNotFoundException("No Fresher Found with id" + " " + id));
+		
+		Optional<FresherInfo> fresherInfo = repo.findById(id);
+		if (fresherInfo.isPresent()) {
+			return freshservice.deleteFresherById(id);
 
-		return freshservice.deleteFresherById(id);
+		} else {			
+			throw new FresherNotFoundException("No Fresher Found with id" + " " + id);
+		}
+		
+		
+		
 
+		
 	}
 
 	@GetMapping(value = "/{id}")
@@ -240,7 +249,7 @@ public class FresherModuleController {
 					 return ResponseEntity.ok(re);
 				
 				} else {			
-					throw new FresherNotFoundException("No Fresher Found with Username" + " " + username);
+					throw new FresherNotFoundException("Wrong Username :((" + " " + username + " "+ "Check once!!");
 				}
 				
 		

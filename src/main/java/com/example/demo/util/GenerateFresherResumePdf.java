@@ -9,6 +9,7 @@ import com.example.demo.entities.FresherInfo;
 import com.example.demo.entities.Hobbies;
 import com.example.demo.entities.Projects;
 import com.example.demo.entities.SkillInfo;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -55,7 +56,7 @@ public class GenerateFresherResumePdf {
 					"----------------------------------------------------------------------------------------------------------------------------------");
 			pSpace.setSpacingAfter(8);
 
-			Font fontSideHeadings = FontFactory.getFont(FontFactory.COURIER_BOLD);
+			Font fontSideHeadings = FontFactory.getFont(FontFactory.COURIER_BOLD,14 );
 			fontSideHeadings.setSize(15);
 			Chunk academic = new Chunk("ACADEMIC", fontSideHeadings);
 			academic.setUnderline(1f, -2f);
@@ -71,7 +72,7 @@ public class GenerateFresherResumePdf {
 			pBranch.setSpacingBefore(5);
 			Paragraph pDegreePercent = new Paragraph("* Degree% : "+String.valueOf(fresher.getAcademic().getDegreePercent())+"%",fontPersonalDetails);
 			pDegreePercent.setSpacingBefore(5);
-			Paragraph pNoOfBacklogs = new Paragraph("* NoOfBacklogs : "+String.valueOf(fresher.getAcademic().getNoOfBacklogs()),fontPersonalDetails);
+			Paragraph pNoOfBacklogs = new Paragraph("* No_Of_Backlogs : "+String.valueOf(fresher.getAcademic().getNoOfBacklogs()),fontPersonalDetails);
 			pNoOfBacklogs.setSpacingBefore(8);
 			Paragraph pYeargap = new Paragraph("* Year_gap : "+String.valueOf(fresher.getAcademic().getYeargap()),fontPersonalDetails);
 			pYeargap.setSpacingBefore(8);
@@ -118,7 +119,7 @@ public class GenerateFresherResumePdf {
 			
 			for(Projects pp : ProjectDetails)
 			{
-				Paragraph pProjects = new Paragraph("* " + pp.getProjectName() + "-" + pp.getYear() ,fontPersonalDetails);
+				Paragraph pProjects = new Paragraph(" " + pp.getProjectName()  ,fontPersonalDetails);
 				pProjects.setSpacingBefore(5);
 				document.add(pProjects);
 			}
@@ -127,7 +128,7 @@ public class GenerateFresherResumePdf {
 			document.add(Skills);
 			for(SkillInfo ss : SkillsDetails)
 			{
-				Paragraph pSkillInfo = new Paragraph("* " + ss.getSkillName() ,fontPersonalDetails);
+				Paragraph pSkillInfo = new Paragraph(" " + ss.getSkillName() ,fontPersonalDetails);
 				pSkillInfo.setSpacingBefore(5);
 				document.add(pSkillInfo);
 			}
@@ -137,7 +138,7 @@ public class GenerateFresherResumePdf {
 			
 			for(Hobbies hh : HobbiesDetails)
 			{
-				Paragraph pHobbies = new Paragraph("* " + hh.getHobbyName() ,fontPersonalDetails);
+				Paragraph pHobbies = new Paragraph(" " + hh.getHobbyName() ,fontPersonalDetails);
 				pHobbies.setSpacingBefore(5);
 				document.add(pHobbies);
 			}
@@ -159,7 +160,7 @@ public class GenerateFresherResumePdf {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 
 		try {
-			Font fontTitle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
+			Font fontTitle = FontFactory.getFont(FontFactory.COURIER_BOLDOBLIQUE);
 			fontTitle.setSize(20);
 
 			Paragraph pTitle = new Paragraph("Resume", fontTitle);
@@ -181,7 +182,6 @@ public class GenerateFresherResumePdf {
 
 			Paragraph pAddress = new Paragraph(fresher.getAddress(), fontPersonalDetails);
 			pAddress.setAlignment(Paragraph.ALIGN_RIGHT);
-			pAddress.setSpacingAfter(10);
 			
 			Paragraph pAge = new Paragraph(String.valueOf(fresher.getAge()), fontPersonalDetails);
 			pAge.setAlignment(Paragraph.ALIGN_RIGHT);
@@ -189,7 +189,7 @@ public class GenerateFresherResumePdf {
 					"----------------------------------------------------------------------------------------------------------------------------------");
 			pSpace.setSpacingAfter(10);
 
-			Font fontSideHeadings = FontFactory.getFont(FontFactory.COURIER_BOLD);
+			Font fontSideHeadings = FontFactory.getFont(FontFactory.COURIER_BOLD,  12, Font.NORMAL, BaseColor.BLUE);
 			fontSideHeadings.setSize(15);
 			Chunk academic = new Chunk("ACADEMIC", fontSideHeadings);
 			academic.setUnderline(1f, -2f);
@@ -198,11 +198,11 @@ public class GenerateFresherResumePdf {
 			pDegree.setSpacingBefore(8);
 			Paragraph pBranch = new Paragraph("* Branch : "+String.valueOf(fresher.getAcademic().getBranch()),fontPersonalDetails);
 			pBranch.setSpacingBefore(5);
-			Paragraph pDegreePercent = new Paragraph("*Degree% : "+String.valueOf(fresher.getAcademic().getDegreePercent())+"%",fontPersonalDetails);
+			Paragraph pDegreePercent = new Paragraph("* Degree% : "+String.valueOf(fresher.getAcademic().getDegreePercent())+"%",fontPersonalDetails);
 			pDegreePercent.setSpacingBefore(5);
-			Paragraph pNoOfBacklogs = new Paragraph("* NoOfBacklogs : "+String.valueOf(fresher.getAcademic().getNoOfBacklogs()),fontPersonalDetails);
+			Paragraph pNoOfBacklogs = new Paragraph("* No_Of_Backlogs : "+String.valueOf(fresher.getAcademic().getNoOfBacklogs()),fontPersonalDetails);
 			pNoOfBacklogs.setSpacingBefore(8);
-			Paragraph pYeargap = new Paragraph("* Yeargap : "+String.valueOf(fresher.getAcademic().getYeargap()),fontPersonalDetails);
+			Paragraph pYeargap = new Paragraph("* Year_gap : "+String.valueOf(fresher.getAcademic().getYeargap()),fontPersonalDetails);
 			pYeargap.setSpacingBefore(8);
 			
 		
@@ -253,7 +253,7 @@ public class GenerateFresherResumePdf {
 			
 			for(Projects pp : ProjectDetails)
 			{
-				Paragraph pProjects = new Paragraph("* " + pp.getProjectName()  + "-" + pp.getYear()  ,fontPersonalDetails);
+				Paragraph pProjects = new Paragraph(" " + pp.getProjectName()   ,fontPersonalDetails);
 				pProjects.setSpacingBefore(5);
 				document.add(pProjects);
 			}
@@ -262,7 +262,7 @@ public class GenerateFresherResumePdf {
 			document.add(Skills);
 			for(SkillInfo ss : SkillsDetails)
 			{
-				Paragraph pSkillInfo = new Paragraph("* " + ss.getSkillName() ,fontPersonalDetails);
+				Paragraph pSkillInfo = new Paragraph(" " + ss.getSkillName() ,fontPersonalDetails);
 				pSkillInfo.setSpacingBefore(5);
 				document.add(pSkillInfo);
 			}
@@ -272,7 +272,7 @@ public class GenerateFresherResumePdf {
 			
 			for(Hobbies hh : HobbiesDetails)
 			{
-				Paragraph pHobbies = new Paragraph("* " + hh.getHobbyName() ,fontPersonalDetails);
+				Paragraph pHobbies = new Paragraph(" " + hh.getHobbyName() ,fontPersonalDetails);
 				pHobbies.setSpacingBefore(5);
 				document.add(pHobbies);
 			}
@@ -293,7 +293,9 @@ public class GenerateFresherResumePdf {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 
 		try {
+		//	Font fontTitle = FontFactory.getFont(FontFactory.COURIER_BOLD ,BaseColor.RED);
 			Font fontTitle = FontFactory.getFont(FontFactory.COURIER_BOLD);
+	
 			fontTitle.setSize(28);
 
 			Paragraph pTitle = new Paragraph("Resume", fontTitle);
@@ -324,7 +326,7 @@ public class GenerateFresherResumePdf {
 					"----------------------------------------------------------------------------------------------------------------------------------");
 			pSpace.setSpacingAfter(10);
 
-			Font fontSideHeadings = FontFactory.getFont(FontFactory.COURIER_BOLD);
+			Font fontSideHeadings = FontFactory.getFont(FontFactory.COURIER_BOLD, 12, Font.NORMAL, BaseColor.RED);
 			fontSideHeadings.setSize(16);
 			Chunk academic = new Chunk("ACADEMICS", fontSideHeadings);
 			academic.setUnderline(1f, -2f);
@@ -335,7 +337,7 @@ public class GenerateFresherResumePdf {
 			pBranch.setSpacingBefore(4);
 			Paragraph pDegreePercent = new Paragraph("* Degree% : "+String.valueOf(fresher.getAcademic().getDegreePercent())+"%",fontPersonalDetails);
 			pDegreePercent.setSpacingBefore(4);
-			Paragraph pNoOfBacklogs = new Paragraph("* NoOfBacklogs : "+String.valueOf(fresher.getAcademic().getNoOfBacklogs()),fontPersonalDetails);
+			Paragraph pNoOfBacklogs = new Paragraph("* No_Of_Backlogs : "+String.valueOf(fresher.getAcademic().getNoOfBacklogs()),fontPersonalDetails);
 			pNoOfBacklogs.setSpacingBefore(4);
 			Paragraph pYeargap = new Paragraph("* Year_gap : "+String.valueOf(fresher.getAcademic().getYeargap()),fontPersonalDetails);
 			pYeargap.setSpacingBefore(4);
@@ -388,7 +390,7 @@ public class GenerateFresherResumePdf {
 			
 			for(Projects pp : ProjectDetails)
 			{
-				Paragraph pProjects = new Paragraph("* " + pp.getProjectName()  + "-" + pp.getYear()  ,fontPersonalDetails);
+				Paragraph pProjects = new Paragraph(" " + pp.getProjectName()  ,fontPersonalDetails);
 				pProjects.setSpacingBefore(5);
 				document.add(pProjects);
 			}
@@ -397,7 +399,7 @@ public class GenerateFresherResumePdf {
 			document.add(Skills);
 			for(SkillInfo ss : SkillsDetails)
 			{
-				Paragraph pSkillInfo = new Paragraph("* " + ss.getSkillName() ,fontPersonalDetails);
+				Paragraph pSkillInfo = new Paragraph(" " + ss.getSkillName() ,fontPersonalDetails);
 				pSkillInfo.setSpacingBefore(5);
 				document.add(pSkillInfo);
 			}
@@ -407,7 +409,7 @@ public class GenerateFresherResumePdf {
 			
 			for(Hobbies hh : HobbiesDetails)
 			{
-				Paragraph pHobbies = new Paragraph("* " + hh.getHobbyName() ,fontPersonalDetails);
+				Paragraph pHobbies = new Paragraph(" " + hh.getHobbyName() ,fontPersonalDetails);
 				pHobbies.setSpacingBefore(5);
 				document.add(pHobbies);
 			}
